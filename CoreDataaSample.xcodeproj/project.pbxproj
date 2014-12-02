@@ -15,6 +15,7 @@
 		CECCF6C11A2C5D4A00DF2C82 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CECCF6C01A2C5D4A00DF2C82 /* Images.xcassets */; };
 		CECCF6C41A2C5D4A00DF2C82 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = CECCF6C21A2C5D4A00DF2C82 /* LaunchScreen.xib */; };
 		CECCF6D01A2C5D4A00DF2C82 /* CoreDataaSampleTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CECCF6CF1A2C5D4A00DF2C82 /* CoreDataaSampleTests.swift */; };
+		CECCF6DA1A2C60CF00DF2C82 /* SampleEntity.swift in Sources */ = {isa = PBXBuildFile; fileRef = CECCF6D91A2C60CF00DF2C82 /* SampleEntity.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -40,6 +41,7 @@
 		CECCF6C91A2C5D4A00DF2C82 /* CoreDataaSampleTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = CoreDataaSampleTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		CECCF6CE1A2C5D4A00DF2C82 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		CECCF6CF1A2C5D4A00DF2C82 /* CoreDataaSampleTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataaSampleTests.swift; sourceTree = "<group>"; };
+		CECCF6D91A2C60CF00DF2C82 /* SampleEntity.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SampleEntity.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -88,6 +90,7 @@
 				CECCF6C01A2C5D4A00DF2C82 /* Images.xcassets */,
 				CECCF6C21A2C5D4A00DF2C82 /* LaunchScreen.xib */,
 				CECCF6B61A2C5D4A00DF2C82 /* CoreDataaSample.xcdatamodeld */,
+				CECCF6D91A2C60CF00DF2C82 /* SampleEntity.swift */,
 				CECCF6B21A2C5D4A00DF2C82 /* Supporting Files */,
 			);
 			path = CoreDataaSample;
@@ -222,6 +225,7 @@
 				CECCF6B51A2C5D4A00DF2C82 /* AppDelegate.swift in Sources */,
 				CECCF6BA1A2C5D4A00DF2C82 /* MasterViewController.swift in Sources */,
 				CECCF6BC1A2C5D4A00DF2C82 /* DetailViewController.swift in Sources */,
+				CECCF6DA1A2C60CF00DF2C82 /* SampleEntity.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

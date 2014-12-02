@@ -2,8 +2,6 @@
 //  MasterViewController.swift
 //  CoreDataaSample
 //
-//  Created by yukichi on 2014/12/01.
-//  Copyright (c) 2014年 hanoopy. All rights reserved.
 //
 
 import UIKit
@@ -32,7 +30,7 @@ class MasterViewController: UITableViewController, NSFetchedResultsControllerDel
         // Dispose of any resources that can be recreated.
     }
 
-    func insertNewObject(sender: AnyObject) {
+    /*func insertNewObject(sender: AnyObject) {
         let context = self.fetchedResultsController.managedObjectContext
         let entity = self.fetchedResultsController.fetchRequest.entity!
         let newManagedObject = NSEntityDescription.insertNewObjectForEntityForName(entity.name!, inManagedObjectContext: context) as NSManagedObject
@@ -49,7 +47,25 @@ class MasterViewController: UITableViewController, NSFetchedResultsControllerDel
             //println("Unresolved error \(error), \(error.userInfo)")
             abort()
         }
+    }*/
+    
+    func insertNewObject(sender: AnyObject) {
+        let context = self.fetchedResultsController.managedObjectContext
+        let entity = self.fetchedResultsController.fetchRequest.entity
+        //let newManagedObject = NSEntityDescription.insertNewObjectForEntityForName(entity.name, inManagedObjectContext: context) as NSManagedObject
+        //newManagedObject.setValue(NSDate.date(), forKey: "timeStamp")
+        var entityName:String! = entity!.name
+        
+        let newSampleEntity:SampleEntity! = NSEntityDescription.insertNewObjectForEntityForName("SampleEntity", inManagedObjectContext: context) as SampleEntity
+        newSampleEntity.id = NSNumber(int: self.getNextId())
+        newSampleEntity.name = "name" + newSampleEntity.id!.stringValue
+        
+        var error: NSError? = nil
+        if !context.save(&error) {
+            abort()
+        }
     }
+
 
     // MARK: - Segues
 
@@ -99,14 +115,20 @@ class MasterViewController: UITableViewController, NSFetchedResultsControllerDel
         }
     }
 
-    func configureCell(cell: UITableViewCell, atIndexPath indexPath: NSIndexPath) {
+    /*func configureCell(cell: UITableViewCell, atIndexPath indexPath: NSIndexPath) {
         let object = self.fetchedResultsController.objectAtIndexPath(indexPath) as NSManagedObject
         cell.textLabel.text = object.valueForKey("timeStamp")!.description
+    }*/
+    func configureCell(cell: UITableViewCell, atIndexPath indexPath: NSIndexPath) {
+        //let object = self.fetchedResultsController.objectAtIndexPath(indexPath) as NSManagedObject
+        //cell.textLabel?.text = object.valueForKey("timeStamp")!.description
+        let object = self.fetchedResultsController.objectAtIndexPath(indexPath) as SampleEntity
+        cell.textLabel.text = object.name
     }
 
     // MARK: - Fetched results controller
 
-    var fetchedResultsController: NSFetchedResultsController {
+    /*var fetchedResultsController: NSFetchedResultsController {
         if _fetchedResultsController != nil {
             return _fetchedResultsController!
         }
@@ -140,7 +162,35 @@ class MasterViewController: UITableViewController, NSFetchedResultsControllerDel
     	}
         
         return _fetchedResultsController!
-    }    
+    }*/
+    var fetchedResultsController: NSFetchedResultsController {
+        if _fetchedResultsController != nil {
+            return _fetchedResultsController!
+        }
+        
+        let fetchRequest = NSFetchRequest()
+        //let entity = NSEntityDescription.entityForName("Event", inManagedObjectContext:self.managedObjectContext!)
+        let entity = NSEntityDescription.entityForName("SampleEntity", inManagedObjectContext:self.managedObjectContext!)
+        fetchRequest.entity = entity
+        
+        fetchRequest.fetchBatchSize = 20
+        
+        //let sortDescriptor = NSSortDescriptor(key: "timeStamp", ascending: false)
+        let sortDescriptor = NSSortDescriptor(key: "id", ascending: true)
+        let sortDescriptors = [sortDescriptor]
+        fetchRequest.sortDescriptors = [sortDescriptor]
+        
+        let aFetchedResultsController = NSFetchedResultsController(fetchRequest: fetchRequest,managedObjectContext: self.managedObjectContext!, sectionNameKeyPath: nil, cacheName: "Master")
+        aFetchedResultsController.delegate = self
+        _fetchedResultsController = aFetchedResultsController
+        
+        var error: NSError? = nil
+        if !_fetchedResultsController!.performFetch(&error) {
+            abort()
+        }
+        
+        return _fetchedResultsController!
+    }
     var _fetchedResultsController: NSFetchedResultsController? = nil
 
     func controllerWillChangeContent(controller: NSFetchedResultsController) {
@@ -177,7 +227,30 @@ class MasterViewController: UITableViewController, NSFetchedResultsControllerDel
     func controllerDidChangeContent(controller: NSFetchedResultsController) {
         self.tableView.endUpdates()
     }
-
+    func getNextId() -> Int32 {
+        let context = self.fetchedResultsController.managedObjectContext
+        let entity = self.fetchedResultsController.fetchRequest.entity
+        let fetchRequest = NSFetchRequest()
+        fetchRequest.entity = entity
+        
+        let keyPathExpression = NSExpression(forKeyPath: "id")
+        let maxExpression = NSExpression(forFunction: "max:", arguments: [keyPathExpression])
+        let description = NSExpressionDescription()
+        description.name = "maxId"
+        description.expression = maxExpression
+        description.expressionResultType = .Integer32AttributeType
+        
+        fetchRequest.propertiesToFetch = [description]
+        fetchRequest.resultType = .DictionaryResultType
+        
+        if let results = context.executeFetchRequest(fetchRequest, error: nil) {
+            if results.count > 0 {
+                let maxId = results[0]["maxId"] as Int
+                return maxId + 1;
+            }
+        }
+        return 1
+    }
     /*
      // Implementing the above methods to update the table view in response to individual changes may have performance implications if a large number of changes are made simultaneously. If this proves to be an issue, you can instead just implement controllerDidChangeContent: which notifies the delegate that all section and object changes have been processed.
      

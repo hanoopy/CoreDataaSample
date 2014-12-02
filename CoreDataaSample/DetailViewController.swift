@@ -2,8 +2,6 @@
 //  DetailViewController.swift
 //  CoreDataaSample
 //
-//  Created by yukichi on 2014/12/01.
-//  Copyright (c) 2014年 hanoopy. All rights reserved.
 //
 
 import UIKit
@@ -20,11 +18,18 @@ class DetailViewController: UIViewController {
         }
     }
 
-    func configureView() {
+    /*func configureView() {
         // Update the user interface for the detail item.
         if let detail: AnyObject = self.detailItem {
             if let label = self.detailDescriptionLabel {
                 label.text = detail.valueForKey("timeStamp")!.description
+            }
+        }
+    }*/
+    func configureView() {
+        if let detail: AnyObject = self.detailItem {
+            if let label = self.detailDescriptionLabel {
+                label.text = detail.valueForKey("name")!.description
             }
         }
     }
