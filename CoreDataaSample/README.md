@@ -1,4 +1,0 @@
-CoreDataaSample
-===============
-
-SwiftでCoreDataを使うサンプル
