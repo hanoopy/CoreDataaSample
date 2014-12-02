@@ -1,4 +1,4 @@
 CoreDataaSample
-======
+====
 
 SwiftでCoreDataを使うサンプル
