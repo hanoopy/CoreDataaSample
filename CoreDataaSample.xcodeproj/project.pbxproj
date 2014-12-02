@@ -7,7 +7,6 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		CE6818DA1A2D500600379DCB /* README.md in Sources */ = {isa = PBXBuildFile; fileRef = CE6818D91A2D500600379DCB /* README.md */; };
 		CE6818DC1A2D51E900379DCB /* README.md in Sources */ = {isa = PBXBuildFile; fileRef = CE6818DB1A2D51E900379DCB /* README.md */; };
 		CECCF6B51A2C5D4A00DF2C82 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CECCF6B41A2C5D4A00DF2C82 /* AppDelegate.swift */; };
 		CECCF6B81A2C5D4A00DF2C82 /* CoreDataaSample.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = CECCF6B61A2C5D4A00DF2C82 /* CoreDataaSample.xcdatamodeld */; };
@@ -31,7 +30,6 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		CE6818D91A2D500600379DCB /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; name = README.md; path = CoreDataaSample/README.md; sourceTree = "<group>"; };
 		CE6818DB1A2D51E900379DCB /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 		CECCF6AF1A2C5D4A00DF2C82 /* CoreDataaSample.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CoreDataaSample.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		CECCF6B31A2C5D4A00DF2C82 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -70,7 +68,6 @@
 			isa = PBXGroup;
 			children = (
 				CE6818DB1A2D51E900379DCB /* README.md */,
-				CE6818D91A2D500600379DCB /* README.md */,
 				CECCF6B11A2C5D4A00DF2C82 /* CoreDataaSample */,
 				CECCF6CC1A2C5D4A00DF2C82 /* CoreDataaSampleTests */,
 				CECCF6B01A2C5D4A00DF2C82 /* Products */,
@@ -227,7 +224,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				CE6818DA1A2D500600379DCB /* README.md in Sources */,
 				CECCF6B81A2C5D4A00DF2C82 /* CoreDataaSample.xcdatamodeld in Sources */,
 				CECCF6B51A2C5D4A00DF2C82 /* AppDelegate.swift in Sources */,
 				CE6818DC1A2D51E900379DCB /* README.md in Sources */,
